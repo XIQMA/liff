@@ -68,23 +68,17 @@
     }
 
     async function sendMsg() {
+        alert("Test Sent")
       
       if (liff.getContext().type !== "none") {
         await liff.sendMessages([
           {
             
-            "type": "sticker",
-            "stickerId": 1,
-            "packageId": 1
+            text: 'Send Location',
+                    type: 'locationRequest'
             
           },
-          {
-            
-            "type": "sticker",
-            "stickerId": 2,
-            "packageId": 2
-            
-          }
+          
 
         ])
         alert("Message Sent")
