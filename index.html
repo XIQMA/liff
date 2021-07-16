@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<h1>Hello</h1>
   <p id="os"><b>OS:</b> </p>
   <p id="language"><b>Language:</b> </p>
   <p id="version"><b>Version:</b> </p>
@@ -35,13 +36,15 @@
   <button id="btnLogOut" onclick="logOut()">Log Out</button>
   <button id="btnClose" onclick="closed()">Close</button>
 
+   <button id="btnQR" onclick="window.location='https://line.me/R/nv/QRCodeReader'">Open QR Code</button>
+
   <script src="js/vconsole.min.js"></script>
   <script>
     var vConsole = new VConsole()
     console.log("Hello World!")
   </script>
 
-  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <script src="https://static.line-scdn.net/liff/edge/versions/2.4.0/sdk.js"></script>
   <script>
     function createUniversalLink() {
       const link1 = liff.permanentLink.createUrl()
@@ -149,10 +152,19 @@
 
     async function main() {
       await liff.init({ liffId: "1656218291-2JgW3yEx" })
-      
+
+      const queryString = decodeURIComponent(window.location.search)
+      const params = new URLSearchParams(queryString)
+      if (params.get("param") !== null){
+        document.getElementByTagName("h1")[0].innerHTML = params.get("param")
+      }
+
 
       document.getElementById("isLoggedIn").append(liff.isLoggedIn())
         if (liff.isLoggedIn()) {
+
+
+
           getEnvironment()
           getUserProfile()
           getContext()
