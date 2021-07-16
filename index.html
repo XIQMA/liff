@@ -153,16 +153,16 @@
     async function main() {
       await liff.init({ liffId: "1656218291-2JgW3yEx" })
 
-      const queryString = decodeURIComponent(window.location.search)
-      const params = new URLSearchParams(queryString)
-      if (params.get("param") !== null){
-        document.getElementByTagName("h1")[0].innerHTML = params.get("param")
-      }
+      
 
 
       document.getElementById("isLoggedIn").append(liff.isLoggedIn())
         if (liff.isLoggedIn()) {
-
+const queryString = decodeURIComponent(window.location.search)
+      const params = new URLSearchParams(queryString)
+      if (params.get("param") !== null){
+        document.getElementByTagName("h1")[0].innerHTML = params.get("param")
+      }
 
 
           getEnvironment()
